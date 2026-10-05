@@ -37,29 +37,31 @@ def parse(text):
 
 # (currency, regex on event name, category, min before, min after, moves, what it is, why it matters)
 RULES = [
- ("USD", r"fomc.*press conference", 2,5,20,"ZN, NQ, ES","The Fed Chair's press conference after the rate decision.","Answers to questions can reverse the 2:00 PM move. Stay flat or very small."),
- ("USD", r"federal funds|fomc statement|economic projections", 1,10,10,"ZN, NQ, ES","The Fed's interest rate decision and statement (quarterly meetings also include the dot plot).","The biggest scheduled event of the cycle. It sets rate expectations for everything, so ZN, NQ and ES all move hard."),
- ("USD", r"minutes", 1,10,10,"ZN, NQ","Notes from the previous Fed meeting. Not a new decision.","Can shift rate expectations if the tone differs from the statement. Usually smaller than a decision."),
- ("USD", r"chair|powell|testif|jackson hole|semiannual", 2,5,30,"ZN, NQ, ES","A speech or testimony from the Fed Chair.","The Chair can hint at rate changes. Moves can come at any point in the speech, so the window is longer."),
- ("USD", r"speaks|speech|trump|bessent|treasury sec|tariff", 2,5,20,"NQ, ES, ZN","A speech or remarks from a senior official.","Headlines can spike NQ and ES with no warning (rates, tariffs, trade). Timing is loose, so be careful for the whole speech."),
- ("USD", r"non-farm|average hourly|unemployment rate|employment cost", 1,10,10,"ZN, NQ, ES","The monthly jobs report (payrolls, wages, unemployment rate) or the quarterly Employment Cost Index.","Jobs and wages drive Fed rate expectations. Fast spike and reversal in the first minutes while the liquidity gap fills."),
- ("USD", r"adp", 3,0,0,"ZN","ADP private payrolls, a preview of the official jobs report.","Moves ZN a little, but it is not the official number."),
- ("USD", r"pce|deflator", 1,10,10,"ZN, NQ","PCE inflation, the Fed's preferred inflation gauge.","Hotter than forecast = yields up (ZN down), NQ pressured. Cooler = the reverse."),
- ("USD", r"cpi|ppi", 1,10,10,"ZN, NQ, ES","Consumer (CPI) or producer (PPI) inflation.","Hotter than forecast = yields up (ZN down), NQ hit hardest, ES follows. Whipsaw in the first minutes."),
- ("USD", r"gdp", 1,10,10,"ES, NQ, ZN","A GDP estimate (economic growth). The advance estimate matters most; later ones are revisions.","Shows if growth is strong or weak, which feeds rate expectations."),
- ("USD", r"retail sales", 1,10,10,"ZN, ES, NQ","Monthly consumer spending.","Strong spending can push yields up and shift rate expectations."),
- ("USD", r"durable goods|trade balance|philly|empire|housing starts|building permits|industrial production|import prices|productivity", 1,10,10,"ZN, ES","US economic data released at 8:30 AM ET.","Red-rated by Forex Factory, so it can move yields. Treated like other 8:30 data."),
- ("USD", r"ism|pmi|consumer confidence|sentiment|jolts|home sales|new home|pending home|beige book|factory orders", 3,0,0,"ES, NQ","A business or consumer survey, or a job-openings report.","Usually a smaller move than the 8:30 data, but it can spike for a few minutes."),
- ("USD", r"auction", 3,0,0,"ZN","A Treasury bond auction.","Weak demand can move Treasury yields, so ZN, at 1:00 PM ET."),
- ("EUR", r"main refinancing|deposit facility|monetary policy statement|rate decision", 2,5,15,"ZN, ES","The ECB's interest rate decision and statement.","Moves European yields, which spill into ZN and ES. Matches your 8:10 to 8:30 rule for an 8:15 release."),
- ("EUR", r"press conference", 2,5,15,"ZN, ES","The ECB President's press conference after the decision.","Can move markets again about 30 minutes after the decision."),
- ("EUR", r"lagarde|ecb president|ecb.*speaks|guindos|schnabel|lane|ecb", 2,5,15,"ZN, ES","A speech from the ECB President or board member.","Can hint at rate changes. Caution while it runs."),
- ("EUR", r"cpi|inflation", 3,0,0,"ZN","Euro area or national inflation (usually released around 5:00 AM ET).","Feeds ECB rate expectations. Be careful holding ZN overnight or premarket."),
- ("EUR", r".", 3,0,0,"ZN, ES","A euro-area economic report (growth, PMI, sentiment or jobs).","Red-rated, so it can move the euro and, a little, ZN and ES. Be aware only."),
- ("JPY", r"policy rate|monetary policy statement|outlook report|rate decision", 2,30,90,"ZN, NQ","The Bank of Japan's rate decision and statement (the Outlook Report comes at quarterly meetings).","Lands overnight in ET, so liquidity is thinner. The exact minute varies, so the window is wide."),
- ("JPY", r"press conference", 2,15,45,"ZN, NQ","The BOJ Governor's press conference after the decision.","Tone on future rate hikes can move the yen, ZN and NQ again."),
- ("JPY", r"ueda|boj gov|boj.*speaks|finance minister|intervention|minister", 2,15,45,"ZN, NQ","Remarks from the BOJ Governor or Japan's finance officials.","Hints about policy or yen intervention can move the yen and spill into ZN and NQ."),
- ("JPY", r".", 3,0,0,"ZN","A Japan economic report (inflation, growth, Tankan, trade or jobs).","Moves the yen, with little effect on NQ, ES and ZN. Be aware only."),
+    # --- CATEGORY 1: 10 min before to 10 min after (DO NOT TRADE) ---
+    ("USD", r"federal funds|fomc statement|economic projections", 1, 10, 10, "ZN, NQ, ES", "Fed Rate Decision / Statement / Dot Plot", "The biggest scheduled event of the cycle. Sets rate expectations for everything, so ZN, NQ, and ES move hard."),
+    ("USD", r"minutes", 1, 10, 10, "ZN, NQ", "FOMC Meeting Minutes", "Notes from the prior meeting. Can shift rate expectations if the tone differs from the statement."),
+    ("USD", r"non-farm|average hourly|unemployment rate|employment cost", 1, 10, 10, "ZN, NQ, ES", "Jobs Report / Employment Cost Index", "Jobs and wages drive Fed rate expectations. Fast spike and reversal while liquidity gap fills."),
+    ("USD", r"pce|deflator", 1, 10, 10, "ZN, NQ", "PCE Price Index", "The Fed's preferred inflation gauge. Hotter = yields up (ZN down), NQ pressured."),
+    ("USD", r"cpi|ppi", 1, 10, 10, "ZN, NQ, ES", "CPI / PPI Inflation Data", "Hotter than forecast = yields up (ZN down), NQ hit hardest, ES follows."),
+    ("USD", r"gdp", 1, 10, 10, "ES, NQ, ZN", "GDP Estimates", "Shows economic growth strength, which feeds directly into Fed interest rate expectations."),
+    ("USD", r"retail sales", 1, 10, 10, "ZN, ES, NQ", "Retail Sales Data", "Monthly consumer spending. Strong spending can push yields up and shift rate expectations."),
+    ("USD", r"durable goods|trade balance|philly|empire|housing starts|building permits|industrial production|import prices|productivity", 1, 10, 10, "ZN, ES", "8:30 AM ET US Economic Data", "Red-rated 8:30 AM releases that move Treasury yields."),
+
+    # --- CATEGORY 2: 5 min before to 15-20 min after (CAUTION / SMALLER SIZE) ---
+    ("USD", r"fomc.*press conference", 2, 5, 20, "ZN, NQ, ES", "FOMC Press Conference (2:30 PM ET)", "The Fed Chair's Q&A can reverse or accelerate the 2:00 PM move. Be flat 2:25 to 2:50 PM ET."),
+    ("USD", r"chair|powell|testif|jackson hole|semiannual", 2, 5, 15, "ZN, NQ, ES", "Fed Chair Speech / Testimony", "Chair can hint at rate changes. Headlines can spike markets during the speech window."),
+    ("EUR", r"main refinancing|deposit facility|monetary policy statement|rate decision", 2, 5, 15, "ZN, ES", "ECB Interest Rate Decision", "Moves European yields, which spill directly into ZN bond futures and ES equity futures."),
+    ("EUR", r"press conference|lagarde|ecb president|ecb.*speaks|guindos|schnabel|lane", 2, 5, 15, "ZN, ES", "ECB Press Conference / Lagarde Speech", "Can move European and US yields again about 30 minutes after the rate decision."),
+    ("JPY", r"policy rate|monetary policy statement|outlook report|rate decision", 2, 30, 90, "ZN, NQ", "BOJ Rate Decision / Outlook Report", "Lands overnight ET when liquidity is thinner. Exact release minute varies."),
+    ("JPY", r"press conference|ueda|boj gov|boj.*speaks|finance minister|intervention|minister", 2, 15, 45, "ZN, NQ", "BOJ Press Conference / Intervention Remarks", "Remarks on future rate hikes or currency intervention can move the Yen, ZN, and NQ."),
+
+    # --- CATEGORY 3: SAFE TO TRADE, BE AWARE (0 min flat window) ---
+    ("USD", r"adp|unemployment claims|ism|pmi|consumer confidence|sentiment|jolts|home sales|new home|pending home|beige book|factory orders", 3, 0, 0, "ES, NQ, ZN", "Category 3 Data & Surveys", "Usually smaller or short-lived impact. No flat window needed, expect a brief volatility burst."),
+    ("USD", r"auction", 3, 0, 0, "ZN", "Treasury Bond Auction (1:00 PM ET)", "Weak auction demand can quickly shift Treasury yields and ZN price action."),
+    ("USD", r"speaks|speech|trump|bessent|treasury sec|tariff|fomc member", 3, 0, 0, "NQ, ES, ZN", "General Speeches & Policy News", "Trade normally with awareness. If a surprise tariff/policy announcement drops, treat as Cat 1 for 10 minutes."),
+    ("EUR", r"cpi|inflation", 3, 0, 0, "ZN", "Eurozone / National Inflation", "Feeds ECB rate expectations. Be aware when holding ZN overnight or pre-market."),
+    ("EUR", r".", 3, 0, 0, "ZN, ES", "Euro Area Economic Report", "Red-rated Euro report. Can move the Euro and mildly spill into ZN/ES."),
+    ("JPY", r".", 3, 0, 0, "ZN", "Japan Economic Report / CPI / Tankan", "Moves the Yen with little to no direct effect on NQ, ES, and ZN.")
 ]
 
 def classify(r):  # -> (category, minutes before, minutes after, moves, what, why)
