@@ -25,15 +25,15 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:fx-JN-20261006T023500-2@fxcalendar
-DTSTAMP:20261004T234159Z
+DTSTAMP:20261005T014546Z
 DTSTART;TZID=America/New_York:20261006T022000
 DTEND;TZID=America/New_York:20261006T032000
 SUMMARY:CAUTION | JPY BOJ Gov Ueda Speaks
 DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 2:35 AM ET\nBe fl
  at from 2:20 AM ET to 3:20 AM ET\, then trade smaller until the move settl
- es.\n\nBOJ Gov Ueda Speaks\nWHAT IT IS: Remarks from the BOJ Governor or J
- apan's finance officials.\nWHY IT MATTERS: Hints about policy or yen inter
- vention can move the yen and spill into ZN and NQ.\n\nMoves: ZN\, NQ
+ es.\n\nBOJ Gov Ueda Speaks\nWHAT IT IS: BOJ Press Conference / Interventio
+ n Remarks\nWHY IT MATTERS: Remarks on future rate hikes or currency interv
+ ention can move the Yen\, ZN\, and NQ.\n\nMoves: ZN\, NQ
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:CAUTION | JPY BOJ Gov Ueda Speaks
@@ -42,16 +42,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:fx-US-20261007T140000-1@fxcalendar
-DTSTAMP:20261004T234159Z
+DTSTAMP:20261005T014546Z
 DTSTART;TZID=America/New_York:20261007T135000
 DTEND;TZID=America/New_York:20261007T141000
 SUMMARY:NO TRADE | USD FOMC Meeting Minutes
 DESCRIPTION:CATEGORY 1 - DO NOT TRADE\n\nRelease: 2:00 PM ET\nCancel bracke
  t orders. Be 100% flat in NQ\, ES and ZN by 1:50 PM ET.\nDo not trade agai
- n until 2:10 PM ET.\n\nFOMC Meeting Minutes\nWHAT IT IS: Notes from the pr
- evious Fed meeting. Not a new decision.\nWHY IT MATTERS: Can shift rate ex
- pectations if the tone differs from the statement. Usually smaller than a 
- decision.\n\nMoves: ZN\, NQ
+ n until 2:10 PM ET.\n\nFOMC Meeting Minutes\nWHAT IT IS: FOMC Meeting Minu
+ tes\nWHY IT MATTERS: Notes from the prior meeting. Can shift rate expectat
+ ions if the tone differs from the statement.\n\nMoves: ZN\, NQ
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:NO TRADE | USD FOMC Meeting Minutes
