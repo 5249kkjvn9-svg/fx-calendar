@@ -2,7 +2,7 @@
 """Download Forex Factory's weekly ICS, keep USD/EUR/JPY red+medium events,
 add category + what-to-do notes, write docs/fx.ics for calendar subscription."""
 import re, sys, collections, urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 
 URL = "https://nfs.faireconomy.media/ff_calendar_thisweek.ics"
 OUT = "docs/fx.ics"
@@ -81,6 +81,31 @@ def fold(l):
         out.append(b[:n].decode()); b = b[n:]; first = False
     out.append(b.decode()); return "\r\n ".join(out)
 
+def roll_events(years_ahead=200):
+    """NQ/MNQ contract roll: Thursday 8 days before the 3rd Friday of Mar/Jun/Sep/Dec."""
+    out = []
+    today = datetime.now(timezone.utc).date()
+    now = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    codes = ["H", "M", "U", "Z"]
+    for y in range(today.year, today.year + years_ahead + 1):
+        for i, mo in enumerate((3, 6, 9, 12)):
+            d = date(y, mo, 1)
+            fri = d + timedelta(days=(4 - d.weekday()) % 7 + 14)  # 3rd Friday
+            roll = fri - timedelta(days=8)                        # Thursday before
+            if roll < today: continue
+            ny = (y + 1) % 10 if mo == 12 else y % 10
+            old, new = f"{codes[i]}{y % 10}", f"{codes[(i + 1) % 4]}{ny}"
+            title = f"ROLL NQ/MNQ | NQ{old} -> NQ{new}"
+            desc = [f"Roll NQ and MNQ from {old} to {new}.",
+                    f"Expiration is Friday, {fri:%B} {fri.day}. Volume usually moves to the next contract around today.",
+                    "Check that the next contract's volume is higher before switching."]
+            out += ["BEGIN:VEVENT", f"UID:roll-{roll:%Y%m%d}@fxcalendar", f"DTSTAMP:{now}",
+                    f"DTSTART;VALUE=DATE:{roll:%Y%m%d}", f"DTEND;VALUE=DATE:{(roll + timedelta(days=1)):%Y%m%d}",
+                    "SUMMARY:" + esc(title), "DESCRIPTION:" + esc("\n".join(desc)),
+                    "BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + esc(title), "TRIGGER:-PT15H", "END:VALARM",
+                    "END:VEVENT"]
+    return out
+
 def build(rows):
     F = lambda d: d.strftime("%Y%m%dT%H%M%S"); tf = lambda d: d.strftime("%-I:%M %p") + " ET"
     now = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -119,6 +144,7 @@ def build(rows):
               *((f"DTSTART;VALUE=DATE:{t0:%Y%m%d}", f"DTEND;VALUE=DATE:{(t0 + td(1440)):%Y%m%d}") if allday else (f"DTSTART;TZID=America/New_York:{F(s)}", f"DTEND;TZID=America/New_York:{F(e)}")),
               "SUMMARY:" + esc(title), "DESCRIPTION:" + esc("\n".join(d)),
               "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:" + esc(title), "TRIGGER:" + ("-PT15M" if cat < 3 else "-PT5M"), "END:VALARM", "END:VEVENT"]
+    L += roll_events()
     L.append("END:VCALENDAR")
     return "\r\n".join(fold(l) for l in L) + "\r\n", len(groups)
 
