@@ -23,4 +23,160 @@ DTSTART:19701101T020000
 RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
+BEGIN:VEVENT
+UID:fx-US-20261028T140000-1@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261028T135000
+DTEND;TZID=America/New_York:20261028T141000
+SUMMARY:NO TRADE | USD Federal Funds Rate\, FOMC Statement
+DESCRIPTION:CATEGORY 1 - DO NOT TRADE\n\nRelease: 2:00 PM ET\nCancel bracke
+ t orders. Be 100% flat in NQ\, ES and ZN by 1:50 PM ET.\nDo not trade agai
+ n until 2:10 PM ET.\n\nFederal Funds Rate\nWHAT IT IS: The Fed's interest 
+ rate decision and statement (quarterly meetings also include the dot plot)
+ .\nWHY IT MATTERS: The biggest scheduled event of the cycle. It sets rate 
+ expectations for everything\, so ZN\, NQ and ES all move hard.\nForecast 4
+ .00%\, Previous 4.00%\n\nFOMC Statement\nWHAT IT IS: The Fed's interest ra
+ te decision and statement (quarterly meetings also include the dot plot).\
+ nWHY IT MATTERS: The biggest scheduled event of the cycle. It sets rate ex
+ pectations for everything\, so ZN\, NQ and ES all move hard.\n\nMoves: ZN\
+ , NQ\, ES
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NO TRADE | USD Federal Funds Rate\, FOMC Statement
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-US-20261028T143000-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261028T142500
+DTEND;TZID=America/New_York:20261028T145000
+SUMMARY:CAUTION | USD FOMC Press Conference
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 2:30 PM ET\nBe fl
+ at from 2:25 PM ET to 2:50 PM ET\, then trade smaller until the move settl
+ es.\n\nFOMC Press Conference\nWHAT IT IS: The Fed Chair's press conference
+  after the rate decision.\nWHY IT MATTERS: Answers to questions can revers
+ e the 2:00 PM move. Stay flat or very small.\n\nMoves: ZN\, NQ\, ES
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | USD FOMC Press Conference
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-US-20261029T083000-1@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261029T082000
+DTEND;TZID=America/New_York:20261029T084000
+SUMMARY:NO TRADE | USD Advance GDP q/q\, Core PCE Price Index m/m
+DESCRIPTION:CATEGORY 1 - DO NOT TRADE\n\nRelease: 8:30 AM ET\nCancel bracke
+ t orders. Be 100% flat in NQ\, ES and ZN by 8:20 AM ET.\nDo not trade agai
+ n until 8:40 AM ET.\n\nAdvance GDP q/q\nWHAT IT IS: A GDP estimate (econom
+ ic growth). The advance estimate matters most\; later ones are revisions.\
+ nWHY IT MATTERS: Shows if growth is strong or weak\, which feeds rate expe
+ ctations.\nForecast 3.2%\, Previous 1.5%\n\nCore PCE Price Index m/m\nWHAT
+  IT IS: PCE inflation\, the Fed's preferred inflation gauge.\nWHY IT MATTE
+ RS: Hotter than forecast = yields up (ZN down)\, NQ pressured. Cooler = th
+ e reverse.\nForecast 0.3%\, Previous 0.2%\n\nMoves: ES\, NQ\, ZN
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:NO TRADE | USD Advance GDP q/q\, Core PCE Price Index m/m
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-EZ-20261029T091500-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261029T091000
+DTEND;TZID=America/New_York:20261029T093000
+SUMMARY:CAUTION | EUR Main Refinancing Rate\, Monetary Policy Statement
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 9:15 AM ET\nBe fl
+ at from 9:10 AM ET to 9:30 AM ET\, then trade smaller until the move settl
+ es.\n\nMain Refinancing Rate\nWHAT IT IS: The ECB's interest rate decision
+  and statement.\nWHY IT MATTERS: Moves European yields\, which spill into 
+ ZN and ES. Matches your 8:10 to 8:30 rule for an 8:15 release.\nForecast 2
+ .65%\, Previous 2.65%\n\nMonetary Policy Statement\nWHAT IT IS: The ECB's 
+ interest rate decision and statement.\nWHY IT MATTERS: Moves European yiel
+ ds\, which spill into ZN and ES. Matches your 8:10 to 8:30 rule for an 8:1
+ 5 release.\n\nMoves: ZN\, ES
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | EUR Main Refinancing Rate\, Monetary Policy Statement
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-EZ-20261029T094500-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261029T094000
+DTEND;TZID=America/New_York:20261029T100000
+SUMMARY:CAUTION | EUR ECB Press Conference
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 9:45 AM ET\nBe fl
+ at from 9:40 AM ET to 10:00 AM ET\, then trade smaller until the move sett
+ les.\n\nECB Press Conference\nWHAT IT IS: The ECB President's press confer
+ ence after the decision.\nWHY IT MATTERS: Can move markets again about 30 
+ minutes after the decision.\n\nMoves: ZN\, ES
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | EUR ECB Press Conference
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-JN-20261029T223000-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261029T220000
+DTEND;TZID=America/New_York:20261030T000000
+SUMMARY:CAUTION | JPY BOJ Policy Rate\, Monetary Policy Statement
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 10:30 PM ET\nBe f
+ lat from 10:00 PM ET to 12:00 AM ET\, then trade smaller until the move se
+ ttles.\n\nBOJ Policy Rate\nWHAT IT IS: The Bank of Japan's rate decision a
+ nd statement (the Outlook Report comes at quarterly meetings).\nWHY IT MAT
+ TERS: Lands overnight in ET\, so liquidity is thinner. The exact minute va
+ ries\, so the window is wide.\nForecast <1.25%\, Previous <1.25%\n\nMoneta
+ ry Policy Statement\nWHAT IT IS: The Bank of Japan's rate decision and sta
+ tement (the Outlook Report comes at quarterly meetings).\nWHY IT MATTERS: 
+ Lands overnight in ET\, so liquidity is thinner. The exact minute varies\,
+  so the window is wide.\n\nMoves: ZN\, NQ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | JPY BOJ Policy Rate\, Monetary Policy Statement
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-JN-20261029T223100-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261029T220100
+DTEND;TZID=America/New_York:20261030T000100
+SUMMARY:CAUTION | JPY BOJ Outlook Report
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 10:31 PM ET\nBe f
+ lat from 10:01 PM ET to 12:01 AM ET\, then trade smaller until the move se
+ ttles.\n\nBOJ Outlook Report\nWHAT IT IS: The Bank of Japan's rate decisio
+ n and statement (the Outlook Report comes at quarterly meetings).\nWHY IT 
+ MATTERS: Lands overnight in ET\, so liquidity is thinner. The exact minute
+  varies\, so the window is wide.\n\nMoves: ZN\, NQ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | JPY BOJ Outlook Report
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fx-JN-20261030T013000-2@fxcalendar
+DTSTAMP:20261025T104556Z
+DTSTART;TZID=America/New_York:20261030T011500
+DTEND;TZID=America/New_York:20261030T021500
+SUMMARY:CAUTION | JPY BOJ Press Conference
+DESCRIPTION:CATEGORY 2 - PROCEED WITH CAUTION\n\nRelease: 1:30 AM ET\nBe fl
+ at from 1:15 AM ET to 2:15 AM ET\, then trade smaller until the move settl
+ es.\n\nBOJ Press Conference\nWHAT IT IS: The BOJ Governor's press conferen
+ ce after the decision.\nWHY IT MATTERS: Tone on future rate hikes can move
+  the yen\, ZN and NQ again.\n\nMoves: ZN\, NQ
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CAUTION | JPY BOJ Press Conference
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
 END:VCALENDAR
